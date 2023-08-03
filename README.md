@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# 夏休みの自由研究
+- AIを使ってゲームをプログラミングする
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 動機
+XXX
 
-## Available Scripts
+# ゴール
+XXX
 
-In the project directory, you can run:
+# やったこと
 
-### `npm start`
+## 1. AIを使ってゲームのソースコードを生成する
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### AIにお願いしたこと（ここはお父さんにお願いした）
+```
+reactでゲームを作りたいです。コードを書いてもらえますか？
+以下の仕様です。
+- コンピューターとプレイヤーが交互に数字加算します。
+- 0からスタートします。
+- 1回につき、3まで加算できます。
+- 21の数字を言ったほうが負けです。
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### AIからの回答
+```
+もちろんです、Reactで簡単なゲームを作成することは可能です。
+以下は、あなたの仕様に基づいた基本的なコードの例です。
 
-### `npm test`
+import React, { useState } from "react";
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const Game = () => {
+  const [count, setCount] = useState(0);
+  const [turn, setTurn] = useState("player");
 
-### `npm run build`
+  const handleClick = (value) => {
+    if (count + value <= 21) {
+      setCount(count + value);
+      setTurn(turn === "player" ? "computer" : "player");
+    }
+  };
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  const computerPlay = () => {
+    let value = Math.min(3, 21 - count); // Always choose a value that will not make the count exceed 21.
+    if (turn === "computer") {
+      setTimeout(() => {
+        handleClick(value);
+      }, 1000);
+    }
+  };
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  computerPlay(); // trigger computer play when it's computer's turn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+      <div className="game">
+        <h1>Count: {count}</h1>
+        <p>It's {turn}'s turn</p>
+        {[1, 2, 3].map((value) => (
+            <button
+                key={value}
+                onClick={() => handleClick(value)}
+                disabled={turn === "computer" || count + value > 21}
+            >
+              Add {value}
+            </button>
+        ))}
+        {count >= 21 && <p>{turn === "player" ? "Computer" : "Player"} loses</p>}
+      </div>
+  );
+};
 
-### `npm run eject`
+export default Game;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### これを動かしてみた
+- https://codesandbox.io/s/wonderful-ioana-swrt5h
+- <img src="public/QR_076266.png" alt="https://codesandbox.io/s/wonderful-ioana-swrt5h" width="100" />
