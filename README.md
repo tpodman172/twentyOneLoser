@@ -74,3 +74,10 @@ export default Game;
 ### これを動かしてみた
 - https://codesandbox.io/s/wonderful-ioana-swrt5h
 - <img src="public/QR_076266.png" alt="https://codesandbox.io/s/wonderful-ioana-swrt5h" width="100" />
+
+## 2. AIが生成したコードを修正する
+- [x] コンピューターは必ず3を加算してくる。ランダムな数字を加算するように修正する。 
+- [ ] ボタンをAdd1,Add2,Add3から+1,+2,+3に変更する。
+- [ ] ゲームが終わった後にretry buttonをつける
+- [ ] わざと21を選ぶとPlayerの負けになるはずが`Computer loses` と表示されてしまうのを直そう。
+- [ ] このゲームは後攻が絶対に勝てるゲーム。最強のComputerを作ろう。

@@ -12,7 +12,7 @@ const Game = () => {
   };
 
   const computerPlay = () => {
-    let value = Math.min(3, 21 - count); // Always choose a value that will not make the count exceed 21.
+    let value = Math.min(randomNumber(), 21 - count); // Always choose a value that will not make the count exceed 21.
     if (turn === "computer") {
       setTimeout(() => {
         handleClick(value);
@@ -38,6 +38,11 @@ const Game = () => {
         {count >= 21 && <p>{turn === "player" ? "Computer" : "Player"} loses</p>}
       </div>
   );
+};
+
+const randomNumber = () => {
+  const numbers = [1, 2, 3];
+  return numbers[Math.floor(Math.random() * numbers.length)];
 };
 
 export default Game;
