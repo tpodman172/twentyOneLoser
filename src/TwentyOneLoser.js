@@ -32,7 +32,7 @@ const Game = () => {
                 onClick={() => handleClick(value)}
                 disabled={turn === "computer" || count + value > 21}
             >
-              Add {value}
+              + {value}
             </button>
         ))}
         {count >= 21 && <p>{turn === "player" ? "Computer" : "Player"} loses</p>}
