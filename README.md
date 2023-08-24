@@ -80,4 +80,4 @@ export default Game;
 - [x] ボタンをAdd1,Add2,Add3から+1,+2,+3に変更する。
 - [x] ゲームが終わった後にretry buttonをつける
 - [x] わざと21を選ぶとPlayerの負けになるはずが`Computer loses` と表示されてしまうのを直そう。
-- [ ] このゲームは後攻が絶対に勝てるゲーム。最強のComputerを作ろう。
+- [x] このゲームは後攻が絶対に勝てるゲーム。最強のComputerを作ろう。
