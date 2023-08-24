@@ -13,6 +13,7 @@ const Game = () => {
 
     const handleRetry = () => {
         setCount(0);
+        setTurn('player')
     }
 
     const computerPlay = () => {
